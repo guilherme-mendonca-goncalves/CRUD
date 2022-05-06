@@ -1,4 +1,4 @@
-import { Layout } from '@src/components';
+import { Footer, Layout } from '@src/components';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
@@ -16,9 +16,9 @@ const Home: NextPage = () => {
         </Layout>
       </div>
 
-      <footer>
-        <p>All rights reserved.</p>
-      </footer>
+      <Footer>
+        <p>Todos os direitos reservados.</p>
+      </Footer>
     </>
   );
 };
