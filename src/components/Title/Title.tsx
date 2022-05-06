@@ -1,6 +1,10 @@
 import * as Style from './Title.style';
 
-const Title = (props) => {
+interface TitleProps {
+  children: any
+}
+
+const Title = (props: TitleProps) => {
 
   return (
     <Style.Container>

@@ -1,28 +1,28 @@
 class Client {
-  #id: number;
-  #name: string;
-  #age: number;
+  _id: number;
+  _name: string;
+  _age: number;
 
-  constructor (name: string = '', age: number = 0, id: number = 0) {
-    this.#name = name;
-    this.#age = age;
-    this.#id = id;
+  constructor (name: string, age: number, id: number) {
+    this._name = name;
+    this._age = age;
+    this._id = id;
   }
 
   static empty() {
-    return new Client();
+    return new Client('', 0, 0);
   }
 
   get id() {
-    return this.#id;
+    return this._id;
   }
 
   get name() {
-    return this.#name;
+    return this._name;
   }
 
   get age() {
-    return this.#age;
+    return this._age;
   }
 }
 

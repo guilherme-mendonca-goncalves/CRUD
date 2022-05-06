@@ -19,7 +19,6 @@ const GlobalStyle = createGlobalStyle`
     align-items: center;
     justify-content: center;
     height: 100%;
-    width: 100%;
   }
 
   #__next {
@@ -34,6 +33,10 @@ const GlobalStyle = createGlobalStyle`
   a {
     text-decoration: none;
     color: inherit;
+  }
+
+  button {
+    border: none;
   }
 
   ul {

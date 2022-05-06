@@ -1,8 +1,24 @@
-import { Footer, Layout } from '@src/components';
+import { Footer, Layout, Table } from '@src/components';
+import { Client } from '@src/core';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
 const Home: NextPage = () => {
+  const clientsInput = [
+    new Client('Ana', 25, 1),
+    new Client('Pedro', 29, 2),
+    new Client('Lara', 26, 3),
+    new Client('Felipe', 21, 4)
+  ];
+
+  const clientSelectedFocus = (clientSelected: Client) => {
+    console.log('Editar: ',clientSelected.name);
+  };
+
+  const clientDeletedFocus = (clientSelected: Client) => {
+    console.log('Excluir: ',clientSelected.name);
+  };
+
   return (
     <>
       <Head>
@@ -12,7 +28,7 @@ const Home: NextPage = () => {
 
       <div>
         <Layout title='Cadastro simples'>
-          <span>Conteúdo</span>
+          <Table clients={clientsInput} clientSelect={clientSelectedFocus} clientDeleted={clientDeletedFocus} />
         </Layout>
       </div>
 
