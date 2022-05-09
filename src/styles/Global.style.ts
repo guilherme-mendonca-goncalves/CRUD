@@ -42,6 +42,11 @@ const GlobalStyle = createGlobalStyle`
   ul {
     list-style: none;
   }
+
+  .divButton {
+    display: flex;
+    justify-content: end;
+  }
 `;
 
 export default GlobalStyle;

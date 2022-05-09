@@ -1,4 +1,4 @@
-import { Footer, Layout, Table } from '@src/components';
+import { Button, Footer, Layout, Table } from '@src/components';
 import { Client } from '@src/core';
 import type { NextPage } from 'next';
 import Head from 'next/head';
@@ -28,7 +28,14 @@ const Home: NextPage = () => {
 
       <div>
         <Layout title='Cadastro simples'>
-          <Table clients={clientsInput} clientSelect={clientSelectedFocus} clientDeleted={clientDeletedFocus} />
+          <div className='divButton'>
+            <Button>Novo Cliente</Button>
+          </div>
+          <Table
+            clients={clientsInput}
+            clientSelect={clientSelectedFocus}
+            clientDeleted={clientDeletedFocus}
+          />
         </Layout>
       </div>
 
