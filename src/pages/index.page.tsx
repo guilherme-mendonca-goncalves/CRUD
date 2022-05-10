@@ -1,9 +1,13 @@
-import { Button, Footer, Layout, Table } from '@src/components';
+import { Button, Footer, Form, Layout, Table } from '@src/components';
 import { Client } from '@src/core';
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import { useState } from 'react';
 
 const Home: NextPage = () => {
+  const [client, setClient] = useState<Client>(Client.empty());
+  const [focus, setFocus] = useState<'table' | 'form'>('table');
+
   const clientsInput = [
     new Client('Ana', 25, 1),
     new Client('Pedro', 29, 2),
@@ -12,11 +16,22 @@ const Home: NextPage = () => {
   ];
 
   const clientSelectedFocus = (clientSelected: Client) => {
-    console.log('Editar: ',clientSelected.name);
+    setClient(clientSelected);
+    setFocus('form');
   };
 
   const clientDeletedFocus = (clientSelected: Client) => {
     console.log('Excluir: ',clientSelected.name);
+  };
+
+  const newClient = () => {
+    setClient(Client.empty());
+    setFocus('form');
+  };
+
+  const saveClient = (clientChange: Client) => {
+    console.log(clientChange);
+    setFocus('table');
   };
 
   return (
@@ -28,14 +43,20 @@ const Home: NextPage = () => {
 
       <div>
         <Layout title='Cadastro simples'>
-          <div className='divButton'>
-            <Button>Novo Cliente</Button>
-          </div>
-          <Table
-            clients={clientsInput}
-            clientSelect={clientSelectedFocus}
-            clientDeleted={clientDeletedFocus}
-          />
+          {focus === 'table' ? (
+            <>
+              <div className='divButton'>
+                <Button onClick={newClient} >Novo Cliente</Button>
+              </div>
+              <Table
+                clients={clientsInput}
+                clientSelect={clientSelectedFocus}
+                clientDeleted={clientDeletedFocus}
+              />
+            </>
+          ) : (
+            <Form client={client} onChange={saveClient} cancel={() => setFocus('table')} />
+          )}
         </Layout>
       </div>
 
